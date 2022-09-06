@@ -1,0 +1,963 @@
+{
+  "pieces": [
+    {
+      "name": "class1a",
+      "characters": [
+        {
+          "name": "Nadalia Pristine",
+          "epithet": "HUMAN",
+          "stats": {
+            "sta": 75,
+            "mov": 4,
+            "pro": 20
+          },
+          "cClass": ["Nucleus"],
+          "weapon": {
+            "name": "Unarmed Strike",
+            "desc": "Nadalia punches with her bare fists. Deals 2 damage within 1 space."
+          },
+          "talents": [
+            {
+              "name": "Agreeability",
+              "desc": "Nadalia can convince any NPC with lower STA to do whatever she asks of them.",
+              "sta_penalty": 2
+            }
+          ],
+          "passives": [
+            {
+              "name": "Fail Forward",
+              "desc": "Every time Nadalia fails to roll for a specific intent, she figures out what could have been done better. When she finally succeeds for that specific intent, the success is improved based on how many times she had previously failed it."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Reverse Engineer",
+              "cost": 3,
+              "spammable": false,
+              "desc": "Nadalia keeps track of all Epithet attacks she has seen within the last 2 rounds. She can replicate any of these attacks at (50 + PRO)% damage/effectiveness."
+            },
+            {
+              "name": "Take One for the Team",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Before an ally is attacked, if Nadalia is within MOV range, she intercepts and absorbs the oncoming attack. Nadalia can then immediately Reverse Engineer the absorbed attack, provide the ally with Emotional Support, or do nothing."
+            },
+            {
+              "name": "Emotional Support",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Nadalia pats an ally on the back or shoulder and gives words of encouragement. The ally gains a +3 on their next roll."
+            }
+          ],
+          "outclasses": []
+        },
+        {
+          "name": "Kyoya Rekishi",
+          "epithet": "HISTORY",
+          "stats": {
+            "sta": 50,
+            "mov": 5,
+            "pro": 10
+          },
+          "cClass": ["Reconnaissance"],
+          "weapon": {
+            "name": "Historia",
+            "desc": "A history book that Kyoya needs to use his abilities. Deals 2 damage within 2 spaces."
+          },
+          "talents": [
+            {
+              "name": "Cramming Session",
+              "desc": "Kyoya pours a cup of coffee from his thermos and reads a book while sipping the coffee to temporarily raise PRO by +6.",
+              "sta_penalty": -3
+            }
+          ],
+          "passives": [
+            {
+              "name": "Lesson In History",
+              "desc": "Kyoya uses Historia to look up the history of anything outside of combat. Kyoya has to recite “Historia” in order to read the book."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "NAY THEE!",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Absorb an oncoming attack with the book and deflect it back as a historical item. Item deals (50 + PRO)% of the attack’s damage."
+            },
+            {
+              "name": "Caffeine High",
+              "cost": 1,
+              "spammable": true,
+              "desc": "By figuring out the attack pattern, predict the next move and completely negate one oncoming attack. Negation is performed through physical means (dodging, pushing, running, etc.). Failed negotiations will add +3 damage to Kyoya."
+            },
+            {
+              "name": "Curefinder",
+              "cost": 3,
+              "spammable": false,
+              "desc": "Conjure up a cure to remove any negative effects and fully heal an ally. Can be used to create vaccines which will give immunity from negative effects which will last the entire duration of Kyoya’s PRO level in rounds. Can only be used when an ally has an active negative effect."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Conduit",
+              "desc": "Become a conduit for a person in history and gain their full PRO and abilities. This consumes -1 STA per round and ends when STA is fully depleted or once combat ends in which case, STA will be fully depleted anyways."
+            }
+          ]
+        },
+        {
+          "name": "Aria Bankford",
+          "epithet": "COIN",
+          "stats": {
+            "sta": 66,
+            "mov": 6,
+            "pro": 16
+          },
+          "cClass": ["Summoner"],
+          "weapon": {
+            "name": "Purse",
+            "desc": "A bag with a sling to keep stuff. Does 2 damage within 1 space."
+          },
+          "talents": [
+            {
+              "name": "Financial Boom",
+              "desc": "Aria makes coins in the battlefield explode. Targets hit by the explosions receive 3 damage. Explosive damage stacks.",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "Passive Income",
+              "desc": "Summon a 1d20 of any coin from any time period. Roll 1d20 to determine the valuation of the summoned coins."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Coin Stamp",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Aria summons a giant coin stamp which stamps an oncoming attack. On a successful roll, the attack is absorbed as +2 STA. On a failed roll, the oncoming attack will hit Aria with +2 damage. On a nat20, the attack will be redirected back to the attacker and will deal (50 + PRO)% damage."
+            },
+            {
+              "name": "Market Crash",
+              "cost": 4,
+              "spammable": false,
+              "desc": "Aria summons a hail of coins on a specific area in the field. Targets hit by the coin hail will sustain 10 STA damage and a PRO debuff of (25 + PRO)%."
+            },
+            {
+              "name": "Freshly Minted",
+              "cost": 3,
+              "spammable": false,
+              "desc": "Aria summons a giant coin stamp on an ally which stamps them and cracks in half to reveal the ally with fully replenished STA."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Jackpot",
+              "desc": "Everyone within a range of 20 spaces vomits coins uncontrollably. The coins are conjured from the iron contents in their blood. Due to this, affected targets would be knocked out after they finish vomiting their iron contents worth of coins."
+            }
+          ]
+        },
+        {
+          "name": "Callum Pearson",
+          "epithet": "DOWNFALL",
+          "stats": {
+            "sta": 72,
+            "mov": 5,
+            "pro": 12
+          },
+          "cClass": ["Berserker"],
+          "weapon": {
+            "name": "These Hands",
+            "desc": "Fingerless leather gloves which deal 2 damage within 1 space."
+          },
+          "talents": [
+            {
+              "name": "Catch These Hands",
+              "desc": "Callum goes berserk and multiplies all damage outputs to (200 + PRO)%. Lasts initial PRO in rounds.",
+              "sta_penalty": -3
+            }
+          ],
+          "passives": [
+            {
+              "name": "Pent Up",
+              "desc": "Callum builds up 2 potential PRO for each round he stays passive in combat. Maximum for build up of potential is 100 PRO. Once Callum deals any amount of damage, he goes berserk and his potential PRO is applied to his actual PRO. Callum’s PRO returns to normal at the end of combat."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Feeling Heavy",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Gravity on the field is increased for a round. Anything within the field falls to the ground. Any person floating during Feeling Heavy would fall to the ground and receive 1 damage per 1 space distance from the ground."
+            },
+            {
+              "name": "Heavy Downpour",
+              "cost": 4,
+              "spammable": true,
+              "desc": "Callum throws 1d20 + PRO punches towards a target. On a failed roll, each punch deals 1 damage. On a successful roll, each punch deals 2 damage. With a nat20, each punch deals 4 damage."
+            },
+            {
+              "name": "Sudden Sinkhole",
+              "cost": 3,
+              "spammable": false,
+              "desc": "A sinkhole appears at the feet of a target the size of 5 spaces. Targets within the sinkhole would receive (100 + PRO)% damage."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "class1b",
+      "characters": [
+        {
+          "name": "Cameron Bridgers",
+          "epithet": "ANXIOUS",
+          "stats": {
+            "sta": 60,
+            "mov": 5,
+            "pro": 8
+          },
+          "cClass": ["Runner"],
+          "weapon": {
+            "name": "All-In-One Duffle Gag",
+            "desc": "Cameron carries around a duffel bag that contains anything their teammates requests for. The quality of said item is determined by a dice roll."
+          },
+          "talents": [
+            {
+              "name": "Taking Leave",
+              "desc": "Cameron is able to flee from any battle if they wish, with or without teammates. Needs two dice rolls to use this talent, one for the chances of fleeing and another to determine the amount of members taken with.",
+              "sta_penalty": -2
+            }
+          ],
+          "passives": [
+            {
+              "name": "Ambiguous Bi-gender",
+              "desc": "So is he- wait, is it she? Am I saying the right one? Cameron causes confusion if they meet anyone new."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Scared Straight",
+              "cost": 3,
+              "spammable": true,
+              "desc": "EEK! An oncoming attack is deflected towards a target. Deflected attack deals +3 damage and forces the target to avoid attacking Cameron for 2 turns."
+            },
+            {
+              "name": "Adrenaline Rush",
+              "cost": 5,
+              "spammable": false,
+              "desc": "Cameron throws a massive kick towards a target that deals 3 damage. If any teammates are injured, the damage dealt is amplified to one d20 per teammate injured."
+            },
+            {
+              "name": "Genderswap",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Cameron distracts the enemy by changing their appearance. This causes any attacks toward them to miss and stuns a target for 1 turn."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Zasha Strauss",
+          "epithet": "FINAL",
+          "stats": {
+            "sta": 66,
+            "mov": 4,
+            "pro": 13
+          },
+          "cClass": ["Swordsman"],
+          "weapon": {
+            "name": "RNGatana",
+            "desc": "An ancient katana made by an Epithet user blacksmith. It is imbued with his epithet powers but has become unstable due to degradation. Deals 1d10 damage at 2 spaces."
+          },
+          "talents": [
+            {
+              "name": "Come At Me, Brah!",
+              "desc": "When he is on 25% of maximum STA, Zasha assumes a defensive stance and gains advantage on all actions.",
+              "sta_penalty": -5
+            }
+          ],
+          "passives": [
+            {
+              "name": "ADHD",
+              "desc": "Short attention spans cause Zasha to forget the current battle. A turn might be forgoed for a random action. During this sequence, he can still take damage. Due to this passive being a debuff, a 1d20 is rolled on the beginning of his turns to determine his state of mind."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Parry",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Years of training has prepared him for this exact moment. Zasha parries an oncoming attack and stuns the attacker. On nat20, the attack is deflected and deals +3 damage. On a failed roll, Zasha takes the attack damage and is stunned for a round."
+            },
+            {
+              "name": "Unsheathe",
+              "cost": 5,
+              "spammable": false,
+              "desc": "He’s had enough. Zasha performs a series of lightning fast slices which hurts his targets with 5 damage each. Roll 2d20 for the amount of cuts Zasha performs in his rage."
+            },
+            {
+              "name": "Inspiring Flourish",
+              "cost": 4,
+              "spammable": false,
+              "desc": "A performance to be revered by. Zasha twirls his weapon to motivate his comrades and intimidate his enemies. This gives his comrades advantages on their attacks and his enemies disadvantages."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Rui Majima",
+          "epithet": "FIENDISH",
+          "stats": {
+            "sta": 89,
+            "mov": 5,
+            "pro": 37
+          },
+          "cClass": ["Rogue"],
+          "weapon": {
+            "name": "Demonfire Shuko",
+            "desc": "A claw-like weapon with an ornate Japanese design on its blade. Deals 3 damage at 1 space. Can be used to grapple with advantage. Grappled targets are not able to move."
+          },
+          "talents": [
+            {
+              "name": "Pickpocketer",
+              "desc": "Rui automatically snatches random weapons from foes when he is in a group.",
+              "sta_penalty": 2
+            }
+          ],
+          "passives": [
+            {
+              "name": "Sweet Talker",
+              "desc": "Rui is a natural charmer. He gains an advantage for persuasion attempts on any person of the opposite gender."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Unorthodox Parry",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Rui deflects an attack in an unexpected way. The attack is deflected in a random direction. On nat20, the attack is redirected back to the attacker, dealing full damage. On a failed roll, Rui is hit by the attack and is also stunned for 1 round."
+            },
+            {
+              "name": "Mad Cat Combo",
+              "cost": 5,
+              "spammable": false,
+              "desc": "Rui attacks 3 nearby targets in a flurry of attacks. Each attack deals 2d10 damage and stuns them for 1 round. On nat20 roll, damage dealt is doubled."
+            },
+            {
+              "name": "Aniki’s Blessing",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Rui’s blessing acts as great motivation for a fellow comrade. Any attacks performed by teammates within 4 spaces are amplified by Rui and have an advantage in hitting their target."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Zylcaryn Estelda",
+          "epithet": "CHILL",
+          "stats": {
+            "sta": 50,
+            "mov": 6,
+            "pro": 18
+          },
+          "cClass": ["Summoner"],
+          "weapon": {
+            "name": "Scythe",
+            "desc": "A regular scythe which deals 3 damage at a range of 2 spaces. Can be used to grapple."
+          },
+          "talents": [
+            {
+              "name": "Assimilation",
+              "desc": "No energy is left wasted. Zylcaryn can harvest 10 STA from fallen enemies.",
+              "sta_penalty": -5
+            }
+          ],
+          "passives": [
+            {
+              "name": "Soothing Spell",
+              "desc": "Zylcaryn has an arsenal of spells, none more potent as this one. By uttering a special incantation, she is able to calm nearby aggressors within 3 spaces. Attackers would be pacified for 1 round if they are 3 spaces away, 2 rounds if they are 2 spaces away, and 3 rounds if they are right next to her. The spell takes 3 rounds before it can be casted again."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Skull of Demonic Goat",
+              "cost": 5,
+              "spammable": false,
+              "desc": "It’s a beautiful day outside. A swarm of (PRO / 10)d20 skulls is summoned to attack an area of 5 spaces. The skulls release corrupting beams which damage all within the area of attack with 3 damage each. The attack can also be concentrated on a single target in which case, the damage would be tripled."
+            },
+            {
+              "name": "Souls of the Damned",
+              "cost": 1,
+              "spammable": true,
+              "desc": "“Henceforth, my minions!” Zylcaryn summons a legion of souls from the depths of Hell. The souls create a temporary wall which can grapple onto any incoming attack or persons within 1 space which stuns them for 1 round. The wall of souls extends to the heavens."
+            },
+            {
+              "name": "Fog of Dark Essence",
+              "cost": 5,
+              "spammable": false,
+              "desc": "The aura of the undead overwhelms everyone on the battlefield. Targets within the fog receive +1d5 damage and their range of attack is reduced to a maximum of 3 spaces. The fog lasts the amount of rounds rolled when casting it. On nat20, the fog lasts the entire duration of the battle."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "npc",
+      "characters": [
+        {
+          "name": "Mr. Pat",
+          "epithet": "GREAT",
+          "stats": {
+            "sta": 58,
+            "mov": 4,
+            "pro": 44
+          },
+          "cClass": ["Diversion"],
+          "weapon": {
+            "name": "Umbrella",
+            "desc": "Pat is prepped for a rainy day! Deals 2 damage within a range of 1 space."
+          },
+          "talents": [
+            {
+              "name": "Expert User",
+              "desc": "Master of all trades. At the first attempt of any action of the day, Mr. Pat has an advantage on the roll.",
+              "sta_penalty": -3
+            }
+          ],
+          "passives": [
+            {
+              "name": "Embiggen",
+              "desc": "Enlarge anything. Even projectiles. Damage dealt by something embiggened is doubled."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Sizeable Pressure",
+              "cost": 3,
+              "spammable": true,
+              "desc": "A target is enacted with a significant. "
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Mrs. Cindy",
+          "epithet": "PAINKILLER",
+          "stats": {
+            "sta": 54,
+            "mov": 4,
+            "pro": 52
+          },
+          "cClass": ["Medic"],
+          "weapon": {
+            "name": "Asclepius' Cane",
+            "desc": "An epithet-imbued syringe needle which heals a target for 5 STA per turn when impaled with it. May also anesthetize the impaled target if needed."
+          },
+          "talents": [
+            {
+              "name": "Pacifist",
+              "desc": "By continuing to stay passive for more than 5 turns in combat, Mrs. Cindy halves all damage intake. ",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "Healing Aura",
+              "desc": "By staying passive for 3 consecutive turns in combat, Mrs. Cindy is able to recover those around her by 3 STA per turn until passive streak is broken."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Neutralizing Blow",
+              "cost": 0,
+              "spammable": true,
+              "desc": "By punching a target, Mrs. Cindy neutralizes it and it no longer poses a threat."
+            },
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            },
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Luka Maslovskaia",
+          "epithet": "VISITOR",
+          "stats": {
+            "sta": 282,
+            "mov": 5,
+            "pro": 100
+          },
+          "cClass": ["Search & Rescue", "Infiltrator"],
+          "weapon": {
+            "name": "Belt",
+            "desc": "A leather belt with a range of 1. Deals 2 damage and stuns target for 1 round. Can also be used to disarm weapons."
+          },
+          "talents": [
+            {
+              "name": "Well Prepped",
+              "desc": "Luka has prepared well for extreme climates. Luka is resistant to temperature effects.",
+              "sta_penalty": 3
+            },
+            {
+              "name": "Cautious Traveller",
+              "desc": "Luka has advantage on recognizing deception when he is in an unknown place.",
+              "sta_penalty": 5
+            },
+            {
+              "name": "Temporary Resident",
+              "desc": "Luka is accustomed with the shortcuts and best routes to get around. He is twice as fast in familiar locations.",
+              "sta_penalty": -2
+            }
+          ],
+          "passives": [
+            {
+              "name": "POLO!",
+              "desc": "Teleport into recently visited places within PRO rounds."
+            }
+          ],
+          "abilities": [
+            {
+              "name": "MARCO!",
+              "cost": 1,
+              "spammable": true,
+              "desc": "Teleport out of the trajectory of an oncoming attack. On nat20 roll, attack is taken with Luka into POLO!. The attack is instead redirected to where Luka is facing in the new location."
+            },
+            {
+              "name": "Instant Reception",
+              "cost": 5,
+              "spammable": true,
+              "desc": "Luka greatly accelerates an attack towards a target. The attack can be physical or projectile attacks and would deal double damage on hit."
+            },
+            {
+              "name": "Jinxed",
+              "cost": 4,
+              "spammable": true,
+              "desc": "Swap places with a known person and both recover to 50% of their overall STA. On a nat20 roll, both parties recover full STA."
+            },
+            {
+              "name": "Discombobulate",
+              "cost": 5,
+              "spammable": false,
+              "desc": "A target doesn’t recognize the battlefield anymore and is stunned for 1d10 rounds. Attacks on Discombobulated targets receive double damage."
+            },
+            {
+              "name": "Just Visiting!",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Luka visits a location within range for a limited time and is then teleported back. Maximum duration of visit is PRO rounds but can be ended at any point or if damage is sustained."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "SCRAMBLE!",
+              "desc": "Everyone on the field is teleported to a random location and the current battle is canceled. Everyone recovers to full STA."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enemies",
+      "characters": [
+        {
+          "name": "Dummy",
+          "epithet": "None",
+          "stats": {
+            "sta": 30,
+            "mov": 5,
+            "pro": 4
+          },
+          "cClass": ["Unknown"],
+          "weapon": {
+            "name": "None",
+            "desc": "None"
+          },
+          "talents": [
+            {
+              "name": "None",
+              "desc": "None",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "None",
+              "desc": "None"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "None",
+              "cost": 0,
+              "spammable": false,
+              "desc": "None"
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "None",
+              "desc": "None"
+            }
+          ]
+        },
+        {
+          "name": "Goon",
+          "epithet": "UNKNOWN",
+          "stats": {
+            "sta": 28,
+            "mov": 5,
+            "pro": 4
+          },
+          "cClass": ["Danger (Deviant)"],
+          "weapon": {
+            "name": "Knife",
+            "desc": "Stabbing and slicing weapon which deals 2 damage and incurs bleeding to target on nat20. Throwable and deals damage up to a range of 3."
+          },
+          "talents": [
+            {
+              "name": "Determined",
+              "desc": "When STA is below 90%, Goon will continue to attack without hesitance.",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "None",
+              "desc": "None"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "PUNCH!",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Punch for 3 damage."
+            },
+            {
+              "name": "KICK!",
+              "cost": 5,
+              "spammable": false,
+              "desc": "Perform kicks for 5 damage."
+            },
+            {
+              "name": "Fiery Rage",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Goon halves his total STA but his damage output is improved by +3 for the entirety of the battle.  "
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Goon Rogue",
+          "epithet": "UNKNOWN",
+          "stats": {
+            "sta": 23,
+            "mov": 4,
+            "pro": 6
+          },
+          "cClass": ["Danger (Rogue)"],
+          "weapon": {
+            "name": "Katar",
+            "desc": "A short range stabbing weapon adorned with the fist. Deals 4 damage at 1 range."
+          },
+          "talents": [
+            {
+              "name": "Easily Hidden",
+              "desc": "Goon Rogue is harder to be spotted in the dark. Has an advantage when fighting in the dark.",
+              "sta_penalty": -3
+            }
+          ],
+          "passives": [
+            {
+              "name": "Unkown",
+              "desc": "Unkown"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "PUNCH!",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Punch for 3 damage."
+            },
+            {
+              "name": "KICK!",
+              "cost": 5,
+              "spammable": false,
+              "desc": "Performs kicks for 5 damage."
+            },
+            {
+              "name": "Final Stand",
+              "cost": 5,
+              "spammable": false,
+              "desc": "Unknown"
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Goon Grunt",
+          "epithet": "UNKNOWN",
+          "stats": {
+            "sta": 35,
+            "mov": 4,
+            "pro": 12
+          },
+          "cClass": ["Danger (Tank)"],
+          "weapon": {
+            "name": "Metal Baseball Bat",
+            "desc": "A heavy weapon with slow attack speed. Deals 5 damage in 2 range but action happens at the end of the round."
+          },
+          "talents": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "PUNCH!",
+              "cost": 3,
+              "spammable": true,
+              "desc": "Punch for 3 damage."
+            },
+            {
+              "name": "Taunt",
+              "cost": 2,
+              "spammable": true,
+              "desc": "Taunt a target. If ignored, a baseball will be thrown as an attack for 2 damage."
+            },
+            {
+              "name": "Hunker Down",
+              "cost": 5,
+              "spammable": false,
+              "desc": "Speed is halved but damage received is also halved. Takes action every other turn moving forward."
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Unknown Goon Leader",
+          "epithet": "GLARE",
+          "stats": {
+            "sta": 100,
+            "mov": 5,
+            "pro": 45
+          },
+          "cClass": ["Oppressor"],
+          "weapon": {
+            "name": "Kitchen Knife",
+            "desc": "Stabbing and slicing weapon which deals 2 damage and incurs bleeding to target on nat20. Throwable and deals damage up to a range of 3."
+          },
+          "talents": [
+            {
+              "name": "Well Prepped",
+              "desc": "Targets which meet eyes with Yuri will be intimidated by his furious gaze. Any interactions with him performed by affected targets will be at a disadvantage.",
+              "sta_penalty": -5
+            },
+            {
+              "name": "Light of God",
+              "desc": "Being in sunlit places brings Yuri a sense of peace. Yuri recovers +5 STA by maximum STA when exposed to sunlight.",
+              "sta_penalty": 8
+            },
+            {
+              "name": "Unknown",
+              "desc": "Unknown",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            },
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            },
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            },
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Proficient Goon",
+          "epithet": "UNKNOWN",
+          "stats": {
+            "sta": 30,
+            "mov": 6,
+            "pro": 48
+          },
+          "cClass": ["Specialist"],
+          "weapon": {
+            "name": "Unknown",
+            "desc": "Unknown"
+          },
+          "talents": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        },
+        {
+          "name": "Tanky Goon",
+          "epithet": "UNKNOWN",
+          "stats": {
+            "sta": 100,
+            "mov": 5,
+            "pro": 25
+          },
+          "cClass": ["Tank"],
+          "weapon": {
+            "name": "Unknown",
+            "desc": "Unknown"
+          },
+          "talents": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown",
+              "sta_penalty": 0
+            }
+          ],
+          "passives": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ],
+          "abilities": [
+            {
+              "name": "Unknown",
+              "cost": 0,
+              "spammable": true,
+              "desc": "Unknown"
+            }
+          ],
+          "outclasses": [
+            {
+              "name": "Unknown",
+              "desc": "Unknown"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
