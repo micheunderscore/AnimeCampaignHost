@@ -32,7 +32,10 @@ public class HeatMapGenericVisual : MonoBehaviour {
         grid.OnGridObjectChanged += Grid_OnGridObjectChanged;
     }
 
-    private void Grid_OnGridObjectChanged(object sender, Grid<HeatMapGridObject>.OnGridObjectChangedEventArgs e) {
+    private void Grid_OnGridObjectChanged(
+        object sender,
+         Grid<HeatMapGridObject>.OnGridObjectChangedEventArgs e
+    ) {
         updateMesh = true;
     }
 
@@ -44,7 +47,12 @@ public class HeatMapGenericVisual : MonoBehaviour {
     }
 
     private void UpdateHeatMapVisual() {
-        MeshUtils.CreateEmptyMeshArrays(grid.GetWidth() * grid.GetHeight(), out Vector3[] vertices, out Vector2[] uv, out int[] triangles);
+        MeshUtils.CreateEmptyMeshArrays(
+            grid.GetWidth() * grid.GetHeight(),
+            out Vector3[] vertices,
+            out Vector2[] uv,
+            out int[] triangles
+        );
 
         for (int x = 0; x < grid.GetWidth(); x++) {
             for (int y = 0; y < grid.GetHeight(); y++) {
@@ -54,7 +62,17 @@ public class HeatMapGenericVisual : MonoBehaviour {
                 HeatMapGridObject gridObject = grid.GetGridObject(x, y);
                 float gridValueNormalized = gridObject.GetValueNormalized();
                 Vector2 gridValueUV = new Vector2(gridValueNormalized, 0f);
-                MeshUtils.AddToMeshArrays(vertices, uv, triangles, index, grid.GetWorldPosition(x, y) + quadSize * .5f, 0f, quadSize, gridValueUV, gridValueUV);
+                MeshUtils.AddToMeshArrays(
+                    vertices,
+                    uv,
+                    triangles,
+                    index,
+                    grid.GetWorldPosition(x, y) + quadSize * .5f,
+                    0f,
+                    quadSize,
+                    gridValueUV,
+                    gridValueUV
+                );
             }
         }
 
