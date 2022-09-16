@@ -13,13 +13,13 @@ public class PlayerManager : MonoBehaviour {
 
     public void Start() {
         string jsonString = jsonReader.Read("players.json");
-        SaveSystem.players = JsonUtility.FromJson<GameData>(jsonString);
+        LegacySaveSystem.players = JsonUtility.FromJson<GameData>(jsonString);
 
         LoadChars();
     }
 
     public void LoadChars() {
-        GameData players = SaveSystem.players;
+        GameData players = LegacySaveSystem.players;
 
         int j = 1;
 

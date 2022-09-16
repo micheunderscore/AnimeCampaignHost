@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using CodeMonkey.Utils;
+using TMPro;
 
 public class Grid<TGridObject> {
     public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
@@ -21,6 +22,7 @@ public class Grid<TGridObject> {
 
         gridArray = new TGridObject[width, height];
         debugTextArray = new TextMesh[width, height];
+        GameObject gridTextParent = new GameObject("Grid Text Parent");
 
         for (int x = 0; x < gridArray.GetLength(0); x++) {
             for (int y = 0; y < gridArray.GetLength(1); y++) {
@@ -30,7 +32,7 @@ public class Grid<TGridObject> {
 
         for (int x = 0; x < gridArray.GetLength(0); x++) {
             for (int y = 0; y < gridArray.GetLength(1); y++) {
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y]?.ToString(), gridTextParent.transform, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, (int)cellSize * 2, Color.white, TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
             }

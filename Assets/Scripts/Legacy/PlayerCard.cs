@@ -12,11 +12,11 @@ public class PlayerCard : MonoBehaviour {
     }
 
     public void CheckProfiles() {
-        SaveSystem.SelectedProfile = int.Parse(transform.name) - 1;
-        SaveSystem.ShowProfile = true;
+        LegacySaveSystem.SelectedProfile = int.Parse(transform.name) - 1;
+        LegacySaveSystem.ShowProfile = true;
     }
 
     public void GetCardNumber() {
-        SaveSystem.Selected = transform.name;
+        LegacySaveSystem.Selected = transform.name;
     }
 }

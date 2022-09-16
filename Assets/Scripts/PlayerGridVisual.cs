@@ -1,22 +1,10 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeatMapGenericVisual : MonoBehaviour {
+public class PlayerGridVisual : MonoBehaviour {
 
-    private Grid<HeatMapGridObject> grid;
+    private Grid<PlayerGridObject> grid;
     private Mesh mesh;
     private bool updateMesh;
 
@@ -25,7 +13,7 @@ public class HeatMapGenericVisual : MonoBehaviour {
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
-    public void SetGrid(Grid<HeatMapGridObject> grid) {
+    public void SetGrid(Grid<PlayerGridObject> grid) {
         this.grid = grid;
         UpdateHeatMapVisual();
 
@@ -34,7 +22,7 @@ public class HeatMapGenericVisual : MonoBehaviour {
 
     private void Grid_OnGridObjectChanged(
         object sender,
-         Grid<HeatMapGridObject>.OnGridObjectChangedEventArgs e
+         Grid<PlayerGridObject>.OnGridObjectChangedEventArgs e
     ) {
         updateMesh = true;
     }
@@ -58,8 +46,9 @@ public class HeatMapGenericVisual : MonoBehaviour {
             for (int y = 0; y < grid.GetHeight(); y++) {
                 int index = x * grid.GetHeight() + y;
                 Vector3 quadSize = new Vector3(1, 1) * grid.GetCellSize();
+                Vector3 gridObjectWorldPosition = grid.GetWorldPosition(x, y) + quadSize * .5f;
 
-                HeatMapGridObject gridObject = grid.GetGridObject(x, y);
+                PlayerGridObject gridObject = grid.GetGridObject(x, y);
                 float gridValueNormalized = gridObject.GetValueNormalized();
                 Vector2 gridValueUV = new Vector2(gridValueNormalized, 0f);
                 MeshUtils.AddToMeshArrays(
@@ -67,7 +56,7 @@ public class HeatMapGenericVisual : MonoBehaviour {
                     uv,
                     triangles,
                     index,
-                    grid.GetWorldPosition(x, y) + quadSize * .5f,
+                    gridObjectWorldPosition,
                     0f,
                     quadSize,
                     gridValueUV,
@@ -83,12 +72,12 @@ public class HeatMapGenericVisual : MonoBehaviour {
 
 }
 
-public class HeatMapGridObject {
+public class PlayerGridObject {
     private const int MIN = 0, MAX = 100;
-    private Grid<HeatMapGridObject> grid;
+    private Grid<PlayerGridObject> grid;
     private int x, y;
     public int value;
-    public HeatMapGridObject(Grid<HeatMapGridObject> grid, int x, int y) {
+    public PlayerGridObject(Grid<PlayerGridObject> grid, int x, int y) {
         this.grid = grid;
         this.x = x;
         this.y = y;
@@ -104,6 +93,6 @@ public class HeatMapGridObject {
     }
 
     public override string ToString() {
-        return value.ToString();
+        return value > 0 ? value.ToString() : "";
     }
 }

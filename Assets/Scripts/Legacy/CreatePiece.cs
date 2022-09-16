@@ -9,7 +9,7 @@ public class CreatePiece : MonoBehaviour {
     [SerializeField] private CheckButton _checkButtonPrefab;
 
     public void Start() {
-        foreach (Piece piece in SaveSystem.players.pieces) {
+        foreach (Piece piece in LegacySaveSystem.players.pieces) {
             if (piece.name != "enemies") return;
             foreach (Character character in piece.characters) {
                 var _currentCharacter = Instantiate(_checkButtonPrefab, Vector3.zero, Quaternion.identity, _selectPanel);
@@ -19,7 +19,7 @@ public class CreatePiece : MonoBehaviour {
     }
 
     public void SelectObject() {
-        if (_inputField.text != "") SaveSystem.Selected = _inputField.text;
+        if (_inputField.text != "") LegacySaveSystem.Selected = _inputField.text;
         gameObject.SetActive(false);
         _inputField.text = "";
     }

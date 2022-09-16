@@ -22,13 +22,13 @@ namespace CodeMonkey.Utils {
      * Various assorted utilities functions
      * */
     public static class UtilsClass {
-        
+
         private static readonly Vector3 Vector3zero = Vector3.zero;
         private static readonly Vector3 Vector3one = Vector3.one;
-        private static readonly Vector3 Vector3yDown = new Vector3(0,-1);
+        private static readonly Vector3 Vector3yDown = new Vector3(0, -1);
 
         public const int sortingOrderDefault = 5000;
-        
+
         // Get Sorting order to set SpriteRenderer sortingOrder, higher position = lower sortingOrder
         public static int GetSortingOrder(Vector3 position, int offset, int baseSortingOrder = sortingOrderDefault) {
             return (int)(baseSortingOrder - position.y) + offset;
@@ -57,7 +57,7 @@ namespace CodeMonkey.Utils {
         public static GameObject CreateWorldSprite(string name, Sprite sprite, Vector3 position, Vector3 localScale, int sortingOrder, Color color) {
             return CreateWorldSprite(null, name, sprite, position, localScale, sortingOrder, color);
         }
-        
+
         // Create a Sprite in the World
         public static GameObject CreateWorldSprite(Transform parent, string name, Sprite sprite, Vector3 localPosition, Vector3 localScale, int sortingOrder, Color color) {
             GameObject gameObject = new GameObject(name, typeof(SpriteRenderer));
@@ -99,7 +99,7 @@ namespace CodeMonkey.Utils {
             if (color == null) color = Color.white;
             return CreateWorldText(parent, text, localPosition, fontSize, (Color)color, textAnchor, textAlignment, sortingOrder);
         }
-        
+
         // Create Text in the World
         public static TextMesh CreateWorldText(Transform parent, string text, Vector3 localPosition, int fontSize, Color color, TextAnchor textAnchor, TextAlignment textAlignment, int sortingOrder) {
             GameObject gameObject = new GameObject("World_Text", typeof(TextMesh));
@@ -121,7 +121,7 @@ namespace CodeMonkey.Utils {
         public static void CreateWorldTextPopup(string text, Vector3 localPosition) {
             CreateWorldTextPopup(null, text, localPosition, 40, Color.white, localPosition + new Vector3(0, 20), 1f);
         }
-        
+
         // Create a Text Popup in the World
         public static void CreateWorldTextPopup(Transform parent, string text, Vector3 localPosition, int fontSize, Color color, Vector3 finalPopupPosition, float popupTime) {
             TextMesh textMesh = CreateWorldText(parent, text, localPosition, fontSize, color, TextAnchor.LowerLeft, TextAlignment.Left, sortingOrderDefault);
@@ -141,7 +141,7 @@ namespace CodeMonkey.Utils {
 
         // Create Text Updater in UI
         public static FunctionUpdater CreateUITextUpdater(Func<string> GetTextFunc, Vector2 anchoredPosition) {
-            Text text = DrawTextUI(GetTextFunc(), anchoredPosition,  20, GetDefaultFont());
+            Text text = DrawTextUI(GetTextFunc(), anchoredPosition, 20, GetDefaultFont());
             return FunctionUpdater.Create(() => {
                 text.text = GetTextFunc();
                 return false;
@@ -154,13 +154,13 @@ namespace CodeMonkey.Utils {
             RectTransform rectTransform = DrawSprite(null, color, parent, pos, size, name);
             return rectTransform;
         }
-        
+
         // Draw a UI Sprite
         public static RectTransform DrawSprite(Sprite sprite, Transform parent, Vector2 pos, Vector2 size, string name = null) {
             RectTransform rectTransform = DrawSprite(sprite, Color.white, parent, pos, size, name);
             return rectTransform;
         }
-        
+
         // Draw a UI Sprite
         public static RectTransform DrawSprite(Sprite sprite, Color color, Transform parent, Vector2 pos, Vector2 size, string name = null) {
             // Setup icon
@@ -191,7 +191,7 @@ namespace CodeMonkey.Utils {
             textGoTrans.localScale = Vector3one;
 
             RectTransform textGoRectTransform = textGo.GetComponent<RectTransform>();
-            textGoRectTransform.sizeDelta = new Vector2(0,0);
+            textGoRectTransform.sizeDelta = new Vector2(0, 0);
             textGoRectTransform.anchoredPosition = anchoredPosition;
 
             Text text = textGo.GetComponent<Text>();
@@ -208,25 +208,25 @@ namespace CodeMonkey.Utils {
 
 
         // Parse a float, return default if failed
-	    public static float Parse_Float(string txt, float _default) {
-		    float f;
-		    if (!float.TryParse(txt, out f)) {
-			    f = _default;
-		    }
-		    return f;
-	    }
-        
+        public static float Parse_Float(string txt, float _default) {
+            float f;
+            if (!float.TryParse(txt, out f)) {
+                f = _default;
+            }
+            return f;
+        }
+
         // Parse a int, return default if failed
-	    public static int Parse_Int(string txt, int _default) {
-		    int i;
-		    if (!int.TryParse(txt, out i)) {
-			    i = _default;
-		    }
-		    return i;
-	    }
-	    public static int Parse_Int(string txt) {
+        public static int Parse_Int(string txt, int _default) {
+            int i;
+            if (!int.TryParse(txt, out i)) {
+                i = _default;
+            }
+            return i;
+        }
+        public static int Parse_Int(string txt) {
             return Parse_Int(txt, -1);
-	    }
+        }
 
 
 
@@ -246,7 +246,7 @@ namespace CodeMonkey.Utils {
             Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
             return worldPosition;
         }
-        
+
 
         // Is Mouse over a UI Element? Used for ignoring World clicks through UI
         public static bool IsPointerOverUI() {
@@ -254,94 +254,94 @@ namespace CodeMonkey.Utils {
                 return true;
             } else {
                 PointerEventData pe = new PointerEventData(EventSystem.current);
-                pe.position =  Input.mousePosition;
+                pe.position = Input.mousePosition;
                 List<RaycastResult> hits = new List<RaycastResult>();
-                EventSystem.current.RaycastAll( pe, hits );
+                EventSystem.current.RaycastAll(pe, hits);
                 return hits.Count > 0;
             }
         }
 
 
-        
-		// Returns 00-FF, value 0->255
-	    public static string Dec_to_Hex(int value) {
-		    return value.ToString("X2");
-	    }
 
-		// Returns 0-255
-	    public static int Hex_to_Dec(string hex) {
-		    return Convert.ToInt32(hex, 16);
-	    }
-        
-		// Returns a hex string based on a number between 0->1
-	    public static string Dec01_to_Hex(float value) {
-		    return Dec_to_Hex((int)Mathf.Round(value*255f));
-	    }
+        // Returns 00-FF, value 0->255
+        public static string Dec_to_Hex(int value) {
+            return value.ToString("X2");
+        }
 
-		// Returns a float between 0->1
-	    public static float Hex_to_Dec01(string hex) {
-		    return Hex_to_Dec(hex)/255f;
-	    }
+        // Returns 0-255
+        public static int Hex_to_Dec(string hex) {
+            return Convert.ToInt32(hex, 16);
+        }
+
+        // Returns a hex string based on a number between 0->1
+        public static string Dec01_to_Hex(float value) {
+            return Dec_to_Hex((int)Mathf.Round(value * 255f));
+        }
+
+        // Returns a float between 0->1
+        public static float Hex_to_Dec01(string hex) {
+            return Hex_to_Dec(hex) / 255f;
+        }
 
         // Get Hex Color FF00FF
-	    public static string GetStringFromColor(Color color) {
-		    string red = Dec01_to_Hex(color.r);
-		    string green = Dec01_to_Hex(color.g);
-		    string blue = Dec01_to_Hex(color.b);
-		    return red+green+blue;
-	    }
-        
+        public static string GetStringFromColor(Color color) {
+            string red = Dec01_to_Hex(color.r);
+            string green = Dec01_to_Hex(color.g);
+            string blue = Dec01_to_Hex(color.b);
+            return red + green + blue;
+        }
+
         // Get Hex Color FF00FFAA
-	    public static string GetStringFromColorWithAlpha(Color color) {
-		    string alpha = Dec01_to_Hex(color.a);
-		    return GetStringFromColor(color)+alpha;
-	    }
+        public static string GetStringFromColorWithAlpha(Color color) {
+            string alpha = Dec01_to_Hex(color.a);
+            return GetStringFromColor(color) + alpha;
+        }
 
         // Sets out values to Hex String 'FF'
-	    public static void GetStringFromColor(Color color, out string red, out string green, out string blue, out string alpha) {
-		    red = Dec01_to_Hex(color.r);
-		    green = Dec01_to_Hex(color.g);
-		    blue = Dec01_to_Hex(color.b);
-		    alpha = Dec01_to_Hex(color.a);
-	    }
-        
+        public static void GetStringFromColor(Color color, out string red, out string green, out string blue, out string alpha) {
+            red = Dec01_to_Hex(color.r);
+            green = Dec01_to_Hex(color.g);
+            blue = Dec01_to_Hex(color.b);
+            alpha = Dec01_to_Hex(color.a);
+        }
+
         // Get Hex Color FF00FF
-	    public static string GetStringFromColor(float r, float g, float b) {
-		    string red = Dec01_to_Hex(r);
-		    string green = Dec01_to_Hex(g);
-		    string blue = Dec01_to_Hex(b);
-		    return red+green+blue;
-	    }
-        
+        public static string GetStringFromColor(float r, float g, float b) {
+            string red = Dec01_to_Hex(r);
+            string green = Dec01_to_Hex(g);
+            string blue = Dec01_to_Hex(b);
+            return red + green + blue;
+        }
+
         // Get Hex Color FF00FFAA
-	    public static string GetStringFromColor(float r, float g, float b, float a) {
-		    string alpha = Dec01_to_Hex(a);
-		    return GetStringFromColor(r,g,b)+alpha;
-	    }
-        
+        public static string GetStringFromColor(float r, float g, float b, float a) {
+            string alpha = Dec01_to_Hex(a);
+            return GetStringFromColor(r, g, b) + alpha;
+        }
+
         // Get Color from Hex string FF00FFAA
-	    public static Color GetColorFromString(string color) {
-		    float red = Hex_to_Dec01(color.Substring(0,2));
-		    float green = Hex_to_Dec01(color.Substring(2,2));
-		    float blue = Hex_to_Dec01(color.Substring(4,2));
+        public static Color GetColorFromString(string color) {
+            float red = Hex_to_Dec01(color.Substring(0, 2));
+            float green = Hex_to_Dec01(color.Substring(2, 2));
+            float blue = Hex_to_Dec01(color.Substring(4, 2));
             float alpha = 1f;
             if (color.Length >= 8) {
                 // Color string contains alpha
-                alpha = Hex_to_Dec01(color.Substring(6,2));
+                alpha = Hex_to_Dec01(color.Substring(6, 2));
             }
-		    return new Color(red, green, blue, alpha);
-	    }
+            return new Color(red, green, blue, alpha);
+        }
 
 
         // Generate random normalized direction
         public static Vector3 GetRandomDir() {
-            return new Vector3(UnityEngine.Random.Range(-1f,1f), UnityEngine.Random.Range(-1f,1f)).normalized;
+            return new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
         }
-        
+
 
         public static Vector3 GetVectorFromAngle(int angle) {
             // angle = 0 -> 360
-            float angleRad = angle * (Mathf.PI/180f);
+            float angleRad = angle * (Mathf.PI / 180f);
             return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
         }
 
@@ -375,11 +375,11 @@ namespace CodeMonkey.Utils {
         }
 
         public static Vector3 ApplyRotationToVector(Vector3 vec, float angle) {
-            return Quaternion.Euler(0,0,angle) * vec;
+            return Quaternion.Euler(0, 0, angle) * vec;
         }
 
 
-        
+
         public static FunctionUpdater CreateMouseDraggingAction(Action<Vector3> onMouseDragging) {
             return CreateMouseDraggingAction(0, onMouseDragging);
         }
@@ -396,7 +396,7 @@ namespace CodeMonkey.Utils {
                 if (dragging) {
                     onMouseDragging(UtilsClass.GetMouseWorldPosition());
                 }
-                return false; 
+                return false;
             });
         }
 
@@ -424,7 +424,7 @@ namespace CodeMonkey.Utils {
                         onMouseClickFromTo(from, UtilsClass.GetMouseWorldPosition());
                     }
                 }
-                return false; 
+                return false;
             });
         }
 
@@ -437,7 +437,7 @@ namespace CodeMonkey.Utils {
                 if (Input.GetMouseButtonDown(mouseButton)) {
                     onMouseClick(GetWorldPositionFromUI());
                 }
-                return false; 
+                return false;
             });
         }
 
@@ -446,11 +446,11 @@ namespace CodeMonkey.Utils {
                 if (Input.GetKeyDown(keyCode)) {
                     onKeyDown();
                 }
-                return false; 
+                return false;
             });
         }
 
-        
+
 
         // Get UI Position from World Position
         public static Vector2 GetWorldUIPosition(Vector3 worldPosition, Transform parent, Camera uiCamera, Camera worldCamera) {
@@ -479,7 +479,7 @@ namespace CodeMonkey.Utils {
             Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
             return worldPosition;
         }
-    
+
         public static Vector3 GetWorldPositionFromUI_Perspective() {
             return GetWorldPositionFromUI_Perspective(Input.mousePosition, Camera.main);
         }

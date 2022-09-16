@@ -18,42 +18,42 @@ public class Tile : MonoBehaviour, IPointerEnterHandler {
     }
 
     public void Start() {
-        _holding = SaveSystem.Clear;
+        _holding = LegacySaveSystem.Clear;
         _button.onClick.AddListener(TaskOnClick);
     }
 
     public void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
-            _holding = SaveSystem.Clear;
+            _holding = LegacySaveSystem.Clear;
         }
 
-        _holdingPiece.SetActive(_holding != SaveSystem.Clear);
-        if (_holding != SaveSystem.Clear) {
+        _holdingPiece.SetActive(_holding != LegacySaveSystem.Clear);
+        if (_holding != LegacySaveSystem.Clear) {
             _holdingPiece.GetComponentInChildren<TextMeshProUGUI>().text = _holding;
         }
     }
 
     public void ClearHolding() {
-        _holding = SaveSystem.Clear;
+        _holding = LegacySaveSystem.Clear;
     }
 
     public void TaskOnClick() {
-        if (_holding != SaveSystem.Clear && SaveSystem.Selected != SaveSystem.Clear) {
+        if (_holding != LegacySaveSystem.Clear && LegacySaveSystem.Selected != LegacySaveSystem.Clear) {
             string _switch = _holding;
-            _holding = SaveSystem.Selected;
-            SaveSystem.Selected = _switch;
-        } else if (_holding == SaveSystem.Clear) {
-            _holding = SaveSystem.Selected;
-            SaveSystem.ClearSelected();
+            _holding = LegacySaveSystem.Selected;
+            LegacySaveSystem.Selected = _switch;
+        } else if (_holding == LegacySaveSystem.Clear) {
+            _holding = LegacySaveSystem.Selected;
+            LegacySaveSystem.ClearSelected();
         } else {
-            SaveSystem.Selected = _holding;
+            LegacySaveSystem.Selected = _holding;
             ClearHolding();
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        if (SaveSystem.Color != SaveSystem.Clear && Input.GetMouseButton(1)) {
-            if (ColorUtility.TryParseHtmlString(SaveSystem.Color, out Color color)) { _image.color = color; }
+        if (LegacySaveSystem.Color != LegacySaveSystem.Clear && Input.GetMouseButton(1)) {
+            if (ColorUtility.TryParseHtmlString(LegacySaveSystem.Color, out Color color)) { _image.color = color; }
         }
     }
 }

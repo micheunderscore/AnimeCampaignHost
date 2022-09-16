@@ -12,7 +12,7 @@ public class PlayerPiece : MonoBehaviour {
 
     public void Update() {
         if (followsMouse && cam != null) MoveObject();
-        transform.GetComponent<Image>().color = SaveSystem.ColorBank[int.Parse(_number.text) - 1];
+        transform.GetComponent<Image>().color = LegacySaveSystem.ColorBank[int.Parse(_number.text) - 1];
     }
 
     public void MoveObject() {
