@@ -4,10 +4,9 @@ using UnityEngine;
 using TMPro;
 
 public class ColorForm : MonoBehaviour {
-    [SerializeField] private TMP_InputField _inputField;
+    [SerializeField] private FlexibleColorPicker FCP;
     public void SaveColor() {
-        if (_inputField.text != "") LegacySaveSystem.Color = _inputField.text;
+        LegacySaveSystem.Color = FCP.color;
         gameObject.SetActive(false);
-        _inputField.text = "";
     }
 }

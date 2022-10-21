@@ -9,32 +9,32 @@ public class LegacyGameManager : MonoBehaviour {
     [SerializeField] private GridManager _gridManager;
     [SerializeField] private GameObject _playerPiece, _createForm, _colorForm;
 
-    // vvv DEBUG STUFF REMEMBER TO REMOVE vvv
+    // TODO: vvv REMOVE DEBUG SYSTEM VARIABLE vvv
     private string[] debug = new string[10];
     void Start() {
         LegacySaveSystem.Initialize();
     }
 
     void Update() {
-        // debug[0] = $"GAME MANAGER >> {LegacySaveSystem.Selected}";
-
         if (Input.GetKeyDown("x")) LegacySaveSystem.ClearSelected();
-        // if (Input.GetKeyDown("c")) {
-        //     LegacySaveSystem.ClearSelected();
-        //     _createForm.SetActive(true);
-        // }
+        if (Input.GetKeyDown("v")) {
+            LegacySaveSystem.ClearSelected();
+            _createForm.SetActive(true);
+            _colorForm.SetActive(false);
+        }
         if (Input.GetKeyDown("c")) {
             _colorForm.SetActive(true);
+            _createForm.SetActive(false);
         }
         if (Input.GetKeyDown("escape")) {
+            _colorForm.SetActive(false);
             _createForm.SetActive(false);
         }
 
-        _playerPiece.SetActive(LegacySaveSystem.Selected != LegacySaveSystem.Clear);
-        if (LegacySaveSystem.Selected != LegacySaveSystem.Clear) {
+        _playerPiece.SetActive(LegacySaveSystem.Selected != LegacySaveSystem.Empty);
+        if (LegacySaveSystem.Selected != LegacySaveSystem.Empty) {
             _playerPiece.GetComponentInChildren<TextMeshProUGUI>().text = LegacySaveSystem.Selected;
         }
-        // _profileDisplay.SetActive(SaveSystem.ShowProfile);
     }
 
     // void OnGUI() {

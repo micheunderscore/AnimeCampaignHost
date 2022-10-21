@@ -2,13 +2,13 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public static class LegacySaveSystem {
-    public static string Clear = "EMPTY";
+    public static string Empty = "EMPTY";
     public static GameData players { get; set; }
 
     // Cursor Functionality
-    public static string Selected { get; set; } = Clear;
+    public static string Selected { get; set; } = Empty;
     public static void ClearSelected() {
-        Selected = Clear;
+        Selected = Empty;
     }
 
     // Save Profile
@@ -16,9 +16,9 @@ public static class LegacySaveSystem {
     public static bool ShowProfile { get; set; } = false;
 
     // Color Changer
-    public static string Color { get; set; } = Clear;
+    public static Color Color { get; set; } = Color.white;
     public static void ClearColor() {
-        Color = Clear;
+        Color = Color.white;
     }
 
     // Color Bank

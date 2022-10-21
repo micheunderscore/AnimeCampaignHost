@@ -7,9 +7,10 @@ using TMPro;
 
 public class PlayerManager : MonoBehaviour {
     [SerializeField] private PlayerCard _playerCard;
-    [SerializeField] private Color playerColor, npcColor, enemyColor;
+    [SerializeField] private Color _playerColor, _npcColor, _enemyColor;
+    public int _pieceCount = 0;
     private JsonReader jsonReader = new JsonReader();
-    private GridLayoutGroup playerCards;
+    private GridLayoutGroup _playerCards;
 
     public void Start() {
         string jsonString = jsonReader.Read("players.json");
@@ -21,45 +22,50 @@ public class PlayerManager : MonoBehaviour {
     public void LoadChars() {
         GameData players = LegacySaveSystem.players;
 
-        int j = 1;
-
         foreach (Piece piece in players.pieces) {
-            // if (piece.name == "class1a") continue; // TODO: Improve this (more dynamic)
             for (int i = 0; i < piece.characters.Length; i++) {
-                var cCard = Instantiate(_playerCard, Vector3.zero, Quaternion.identity, transform);
-                var cProfile = piece.characters[i];
-
-                switch (piece.name) {
-                    case "enemies":
-                        cCard.GetComponent<Image>().color = enemyColor;
-                        break;
-                    case "npc":
-                        cCard.GetComponent<Image>().color = npcColor;
-                        break;
-                    default:
-                        cCard.GetComponent<Image>().color = playerColor;
-                        break;
-                }
-
-                cCard.name = $"0{j}";
-
-                foreach (Transform t in cCard.transform) {
-                    if (t.name == "PName") t.GetComponent<TextMeshProUGUI>().text = cProfile.name;
-                    if (t.name == "MOV") t.GetComponent<TextMeshProUGUI>().text = $"{cProfile.stats.mov}";
-                    if (t.name == "PRO") {
-                        t.GetComponent<StatBar>().amt = cProfile.stats.pro;
-                    }
-                    if (t.name == "STA") {
-                        t.GetComponent<StatBar>().amt = cProfile.stats.sta;
-                        t.GetComponent<StatBar>().max = cProfile.stats.sta;
-                    }
-                    if (t.name == "pSTA") {
-                        t.GetComponent<StatBar>().amt = 0;
-                        t.GetComponent<StatBar>().max = cProfile.stats.sta;
-                    }
-                }
-                j++;
+                InitializePieceCard(piece.characters[i], piece.name);
             }
         }
+    }
+
+    public void RecountAllCards() {
+        _pieceCount = transform.childCount;
+    }
+
+    public void InitializePieceCard(Character characterProfile, string pieceType) {
+        var characterCard = Instantiate(_playerCard, Vector3.zero, Quaternion.identity, transform);
+
+        switch (pieceType) {
+            case "enemy":
+                characterCard.GetComponent<Image>().color = _enemyColor;
+                break;
+            case "npc":
+                characterCard.GetComponent<Image>().color = _npcColor;
+                break;
+            default:
+                characterCard.GetComponent<Image>().color = _playerColor;
+                break;
+        }
+
+        characterCard.name = characterProfile.id;
+
+        foreach (Transform t in characterCard.transform) {
+            if (t.name == "PName") t.GetComponent<TextMeshProUGUI>().text = characterProfile.name;
+            if (t.name == "MOV") t.GetComponent<TextMeshProUGUI>().text = $"{characterProfile.stats.mov}";
+            if (t.name == "PRO") {
+                t.GetComponent<StatBar>().amt = characterProfile.stats.pro;
+            }
+            if (t.name == "STA") {
+                t.GetComponent<StatBar>().amt = characterProfile.stats.sta;
+                t.GetComponent<StatBar>().max = characterProfile.stats.sta;
+            }
+            if (t.name == "pSTA") {
+                t.GetComponent<StatBar>().amt = 0;
+                t.GetComponent<StatBar>().max = characterProfile.stats.sta;
+            }
+        }
+
+        RecountAllCards();
     }
 }
