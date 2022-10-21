@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour, IPointerMoveHandler {
     }
 
     public void OnPointerMove(PointerEventData eventData) {
-        if (Input.GetMouseButton(2)) {
+        if (Input.GetMouseButton(1)) {
             _image.color = LegacySaveSystem.Color;
         }
     }
